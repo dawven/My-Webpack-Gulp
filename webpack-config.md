@@ -1,6 +1,6 @@
 # webpack-config #
 
-webpack配置流程
+webpack常用配置
 
 
 ----------
