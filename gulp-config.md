@@ -8,9 +8,9 @@ gulp常用配置
 
 - `npm init` 初始化新建package.json
 
-- `gulpfile.js` 新建webpack配置文件
+- `gulpfile.js` 新建gulp配置文件
 
-- `npm install webpack --save-dev` 安装webpack到项目文件
+- `npm install gulp --save-dev` 安装gulp到项目文件
 
 - `npm install gulp-sass --save-dev` 处理sass
 
@@ -22,7 +22,7 @@ gulp常用配置
 
 - `$ npm install gulp-uglify --save-dev` 压缩JS
 
-- `npm install gulp-if gulp-minify-css --save-dev` 压缩CSS
+- `npm install gulp-minify-css --save-dev` 压缩CSS
 
 - `npm install gulp-imagemin --save-dev` 优化图片
 
@@ -38,7 +38,7 @@ gulp常用配置
     - 使用 `sprity` 创建精灵图
     - `gulp-load-plugins`：自动加载 package.json 中的 gulp 插件，避免一个个require插件
     - `gulp-changed` 只允许通过修改的文件
-    - `Babe`l 或 `Traceur` 写ES6
+    - `Babel` 或 `Traceur` 写ES6
     - `Browserify` , `webpack` , `jspm` 模块化JavaScript
     - `Handlebars` ,`Swing` 模块化Html
     - `require-dir` 分割gulpfile成多个文件
