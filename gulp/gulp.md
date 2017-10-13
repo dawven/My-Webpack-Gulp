@@ -31,6 +31,7 @@ Gulp笔记
 		var sass = require('gulp-sass');
 		// pipe方法是node.js处理流数据的
 		gulp.task('sass', function(){
+			// gulp首先通过src读取文件产生数据流，然后经过一系列pipe操作，最后通过dest方法将数据流写入文件
   			return gulp.src('app/scss/styles.scss') // 文件入口
     			.pipe(sass()) // 使用gulp-sass插件处理
     			.pipe(gulp.dest('app/css')) // 文件出口
@@ -163,14 +164,3 @@ Gulp笔记
    			})
 		});
 
-- gulp API
-
-	- `gulp.src(globs[, options])`，用于产生数据流，参数为符合所提供的匹配模式（glob）或者匹配模式的数组（array of globs）的文件
-	- `gulp.dest(path[, options])`，将管道的输出写入文件，而且这些输出还可以继续输出，所以可以多次调用dest方法，将输出写入到多个目录。目录不存在，也会被新建
-	- `gulp.task(name[, deps], fn)`，定义具体任务，它的第一个参数是任务名，第二个参数是任务函数
-	
-		- name，任务的名字，如果你需要在命令行中运行你的某些任务，那么，请不要在名字中使用空格
-		- deps，个包含任务列表的数组，这些任务会在你当前任务运行之前完成
-		- fn，该函数定义任务所要执行的一些操作。通常来说，它会是这种形式：`gulp.src().pipe(someplugin())`
-
-	- `gulp.watch(glob [, opts], tasks)` 或 `gulp.watch(glob [, opts, cb])`，watch方法用于指定需要监视符合所提供的匹配模式（glob）或者匹配模式的数组（array of globs）的文件。一旦这些文件发生变动，就运行指定任务

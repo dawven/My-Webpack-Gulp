@@ -12,7 +12,7 @@ gulp常用配置
 
 - `npm install gulp --save-dev` 安装gulp到项目文件
 
-- `npm install gulp-sass --save-dev` 处理sass
+- `npm install gulp-sass --save-dev` 处理sass，可以配置输出压缩的CSS
 
 - `npm install browser-sync --save-dev` 搭建本地服务器
 
@@ -32,11 +32,25 @@ gulp常用配置
 
 - `$ npm install run-sequence --save-dev` 控制任务顺序
 
--  其它常用插件 
+-  其它常用插件：
+	- `gulp-rev`，为css文件名添加哈希值，而rev.manifest()会生成一个json文件，这个json文件中记录了原文件名和添加哈希值后的文件名的一个对应关系，这个对应关系在最后对应替换html的引用的时候会用到
 	- 使用 `Autoprefixer`，你不再需要写CSS浏览器内核前缀
     - 增加 `Sourcemap`s，让你更方便的调试Sass,coffeescript
     - 使用 `sprity` 创建精灵图
     - `gulp-load-plugins`：自动加载 package.json 中的 gulp 插件，避免一个个require插件
+		
+			var gulp = require('gulp'),
+			    gulpLoadPlugins = require('gulp-load-plugins'),
+			    plugins = gulpLoadPlugins();
+				// 不用再一个个加载插件
+			gulp.task('js', function () {
+			   return gulp.src('js/*.js')
+			      .pipe(plugins.jshint())
+			      .pipe(plugins.jshint.reporter('default'))
+			      .pipe(plugins.uglify())
+			      .pipe(plugins.concat('app.js'))
+			      .pipe(gulp.dest('build'));
+			});
     - `gulp-changed` 只允许通过修改的文件
     - `Babel` 或 `Traceur` 写ES6
     - `Browserify` , `webpack` , `jspm` 模块化JavaScript
@@ -47,3 +61,4 @@ gulp常用配置
     	- unCSS 移除多余的CSS
     	- CSSO 更深入地优化CSS
     	- Critical 生成行内CSS
+    - `gulp-rename`，重命名，例如压缩后的文件加个min
