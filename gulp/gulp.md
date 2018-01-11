@@ -16,15 +16,24 @@ Gulp笔记
 		$ npm install gulp -g // 全局安装
 		$ npm install --save-dev gulp // 项目本地安装
 
+- gulp项目模板举例：
+
+	![](./images/gulp-folder.jpg)
+
 - 初始化一个项目`npm init`
 
-- `gulpfile.js` 新建webpack配置文件
-		
+- `gulpfile.js` 新建gulp配置文件
+
+		// 第一步是要获取gulp模块		
 		var gulp = require('gulp');
 
 		gulp.task('task-name', function() { // task-name 是给你的任务起的名字，稍后在命令行中执行gulp task-name，将运行该任务
-  			// Stuff here
+  			return gulp.src('source-files') // 待处理文件
+    			.pipe(GulpPlugin()) // 将文件传给gulp插件处理
+    			.pipe(gulp.dest('destination')) // 将处理好的文件传出到目标文件夹 
 		});
+
+- 使用gulp处理文件时，先要安装相应的gulp插件，记住gulp插件使用步骤`安装 --> 引用 --> 使用`
 
 - 处理sass
 	
@@ -32,7 +41,7 @@ Gulp笔记
 		// pipe方法是node.js处理流数据的
 		gulp.task('sass', function(){
 			// gulp首先通过src读取文件产生数据流，然后经过一系列pipe操作，最后通过dest方法将数据流写入文件
-  			return gulp.src('app/scss/styles.scss') // 文件入口
+  			return gulp.src('app/scss/styles.scss') // 文件入口，这时是处理一个文件，如果要处理多个文件，就使用通配符
     			.pipe(sass()) // 使用gulp-sass插件处理
     			.pipe(gulp.dest('app/css')) // 文件出口
 		});
@@ -164,3 +173,8 @@ Gulp笔记
    			})
 		});
 
+- 在大型项目中，为了保证维护性，可以写两个文件区分开发环境和生产环境
+
+		// 下面命令行命令可以设置gulp启用设置的gulpfile文件
+		gulp --gulpfile gulpfile-dev.js
+		gulp --gulpfile gulpfile-build.js

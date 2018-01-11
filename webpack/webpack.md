@@ -9,7 +9,7 @@ webpack笔记
 > 
 > Webpack 通过 loader 的转换，任何形式的资源都可以视作模块，比如 CommonJs 模块、 AMD 模块、 ES6 模块、CSS、图片、 JSON、Coffeescript、 LESS、 SASS 等
 
-![](./image/webpack.png)
+![](./images/webpack.png)
 
 1. webpack安装
 		
